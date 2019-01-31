@@ -16,7 +16,7 @@ def get_dir_paths_with_label(folder_path, label):
     paths = glob.glob(folder_path + '/*.png')
 
     # (example_index, prob_index)
-    labels = np.zeros(len(paths), 2)
+    labels = np.zeros( [len(paths), 2] )
 
     # set all labels to 1
     labels[:, label] = 1
