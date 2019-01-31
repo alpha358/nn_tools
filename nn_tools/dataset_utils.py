@@ -32,7 +32,7 @@ def get_examples_with_label(folder_path, label, img_size):
 
     paths, labels = get_dir_paths_with_label(folder_path, label)
 
-    X = np.zeros([len(paths), img_size[0], img_size[1], 3], dtype=np.uint8)
+    X = np.zeros([len(paths), img_size[1], img_size[0], 3], dtype=np.uint8)
 
     n = 0
     for path in paths:
