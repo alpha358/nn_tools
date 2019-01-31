@@ -24,6 +24,7 @@ def get_dir_paths_with_label(folder_path, label):
     return paths, labels
 
 
+
 def get_examples_with_label(folder_path, label, img_size):
     '''
     Read images from folder, assign constant label
@@ -31,7 +32,7 @@ def get_examples_with_label(folder_path, label, img_size):
 
     paths, labels = get_dir_paths_with_label(folder_path, label)
 
-    X = np.zeros([len(paths), img_size[0], img_size[1], 3])
+    X = np.zeros([len(paths), img_size[0], img_size[1], 3], dtype=np.float32)
 
     n = 0
     for path in paths:
