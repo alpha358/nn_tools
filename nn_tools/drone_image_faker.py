@@ -28,7 +28,7 @@ def insert_subimg(img, subimg, row, col):
     result = np.copy(img)
     
     # grayscale segmentation mask
-    segmentation = np.zeros(img.shape[0:1])
+    segmentation = np.zeros(img.shape[0:2])
 
     mask = np.stack(
         (subimg[:, :, 3], subimg[:, :, 3], subimg[:, :, 3]), axis=2)
