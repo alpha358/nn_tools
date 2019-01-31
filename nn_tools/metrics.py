@@ -5,8 +5,6 @@
 from keras import backend as K
 
 
-
-
 # ==============================================================================
 # ==================================== Defs ====================================
 # ==============================================================================
@@ -23,6 +21,7 @@ def precision(y_true, y_pred):
     predicted_positives = K.sum(K.round(K.clip(y_pred, 0, 1)))
     precision = true_positives / (predicted_positives + K.epsilon())
     return precision
+
 
 def recall(y_true, y_pred):
     """Recall metric.

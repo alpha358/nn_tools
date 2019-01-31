@@ -62,7 +62,7 @@ class SimpleDataGenerator(keras.utils.Sequence):
 
     def __getitem__(self, idx):
         indexes = self.indexes[idx *
-                               self.batch_size: (idx+1) * self.batch_size]
+                               self.batch_size: (idx + 1) * self.batch_size]
 
         paths = self.paths[indexes]
         X = np.empty((paths.shape[0], *self.shape), dtype='float32')
