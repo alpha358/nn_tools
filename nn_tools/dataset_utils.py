@@ -16,12 +16,46 @@ def get_dir_paths_with_label(folder_path, label):
     paths = glob.glob(folder_path + '/*.png')
 
     # (example_index, prob_index)
-    labels = np.zeros( [len(paths), 2] )
+    labels = np.zeros([len(paths), 2])
 
     # set all labels to 1
     labels[:, label] = 1
 
     return paths, labels
+
+
+def get_examples_with_label(folder_path, label, img_size):
+    '''
+    Read images from folder, assign constant label
+    '''
+
+    paths, labels = get_dir_paths_with_label(folder_path, label)
+
+    X = np.zeros([len(paths), img_size[0], img_size[1], 3])
+
+    n = 0
+    for path in paths:
+        X[n, :, :, :] = load_image(path, img_size)
+        n += 1
+    
+    return X, labels
+
+def load_image(path, img_size):
+    '''
+    Read and resize rgb image
+    '''
+    img = cv2.cvtColor(
+        cv2.imread(path),
+        cv2.COLOR_BGR2RGB
+    )
+
+    img = np.float32(
+        cv2.resize(
+            img, (img_size[0], img_size[1])
+        )
+    )
+
+    return img
 
 
 # ==============================================================================
