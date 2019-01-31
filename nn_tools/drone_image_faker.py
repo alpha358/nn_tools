@@ -26,18 +26,26 @@ def insert_subimg(img, subimg, row, col):
     assert img.shape[1] >= subimg.shape[1] + col
 
     result = np.copy(img)
+    
+    # grayscale segmentation mask
+    segmentation = np.zeros(img.shape[0:1])
+
     mask = np.stack(
         (subimg[:, :, 3], subimg[:, :, 3], subimg[:, :, 3]), axis=2)
     result[row:row+subimg.shape[0], col:col+subimg.shape[1]] *= (1 - mask)
     result[row:row+subimg.shape[0], col:col +
            subimg.shape[1]] += mask * subimg[:, :, :3]
 
+    # grayscale segmentation mask
+    segmentation[row:row+subimg.shape[0],
+                 col:col + subimg.shape[1]] = subimg[:, :, 3]
+
     blured = cv2.GaussianBlur(
         result[row:row+subimg.shape[0], col:col+subimg.shape[1]], (5, 5), 0)
     result[row:row+subimg.shape[0], col:col+subimg.shape[1]] *= (1 - mask)
     result[row:row+subimg.shape[0], col:col+subimg.shape[1]] += mask * blured
 
-    return result
+    return result, segmentation
 
 
 def random_insert(img, subimg, size_range, angle_range):
