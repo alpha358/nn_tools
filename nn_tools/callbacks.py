@@ -34,8 +34,8 @@ class TimerCallback(Callback):
         #               model: the model being trained
         #               elapsedTime: the time passed since the beginning until interruption
 
-        self.maxExecutionTime = maxExecutionTime * 60
         self.on_interrupt = on_interrupt
+        self.maxExecutionTime = maxExecutionTime * 60
 
         # the same handler is used for checking each batch or each epoch
         if byBatch == True:
@@ -135,7 +135,7 @@ class PlotLosses(Callback):
         self.losses = []
         self.val_losses = []
 
-        self.fig = plt.figure()
+        self.fig = plt.figure( figsize=(12,6) )
 
         self.logs = []
 
