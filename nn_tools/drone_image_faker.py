@@ -85,9 +85,14 @@ def read_imgs(path, formats=['png', 'jpg'], alpha_channel=False, resize=False, r
         read_format = cv2.IMREAD_COLOR
 
     imgs = []
+    n = 0
+
     for file in os.listdir(path):
+        if n > max_count: break
+
         if file[-3:] in formats:
             img = cv2.imread(path + file, read_format)
+            n += 1
             
             # todo: test
             if resize:
