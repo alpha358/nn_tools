@@ -110,7 +110,7 @@ class PlotLearning(Callback):
         self.acc.append(logs.get('acc'))
         self.val_acc.append(logs.get('val_acc'))
         self.i += 1
-        f, (ax1, ax2) = plt.subplots(1, 2, sharex=True)
+        f, (ax1, ax2) = plt.subplots(1, 2, sharex=True, figsize=(12,6))
 
         clear_output(wait=True)
 
