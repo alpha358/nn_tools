@@ -77,7 +77,7 @@ def random_fake_img(bgr_imgs, drone_imgs, size_range=(0.05, 0.5), angle_range=(0
     return random_insert(bgr_img, drone_img, size_range, angle_range)
 
 
-def read_imgs(path, formats=['png', 'jpg'], alpha_channel=False, resize=False, resized_shape=(640,480)):
+def read_imgs(path, formats=['png', 'jpg'], alpha_channel=False, resize=False, resized_shape=(640,480), max_count = 2000):
 
     if alpha_channel:
         read_format = cv2.IMREAD_UNCHANGED
@@ -89,9 +89,10 @@ def read_imgs(path, formats=['png', 'jpg'], alpha_channel=False, resize=False, r
         if file[-3:] in formats:
             img = cv2.imread(path + file, read_format)
             
+            # todo: test
             if resize:
                 img = cv2.resize(img, resized_shape)
-                
+
             imgs.append(img / 255)
 
     return imgs
