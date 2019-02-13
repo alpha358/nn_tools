@@ -3,4 +3,4 @@ from nn_tools import callbacks,\
  drone_image_faker, \
  loss_functions, \
  metrics, \
- models, load_images
+ models, load_images, plots
