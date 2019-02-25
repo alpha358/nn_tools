@@ -20,3 +20,7 @@ def display_imgs(imgs):
 
     plt.tight_layout()
     plt.show()
+
+
+
+# TODO: plot training history in a grid
